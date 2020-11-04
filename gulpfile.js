@@ -4,16 +4,25 @@ var critical = require('critical');
 // load plugins
 var $ = require('gulp-load-plugins')();
 
-gulp.task('go', function(){
+
+gulp.task('critical', function (cb) {
   critical.generate({
-    inline: true,
     base: 'test/',
     src: 'index.html',
-    target: {
-      html: 'index-critical.html',
-      css: 'critical.css',
-    },
-    width: 1300,
-    height: 900,
+    css: ['test/css/styles.css'],
+    dimensions: [{
+      width: 320,
+      height: 480
+    },{
+      width: 768,
+      height: 1024
+    },{
+      width: 1280,
+      height: 960
+    }],
+    dest: 'critical.css',
+    minify: true,
+    extract: false,
+    ignore: ['font-face']
   });
 });
