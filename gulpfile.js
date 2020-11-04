@@ -5,11 +5,15 @@ var critical = require('critical');
 var $ = require('gulp-load-plugins')();
 
 gulp.task('go', function(){
-    critical.generate({
-      //base: '/',
-      src: 'index.html',
-      target: 'css/styles.css',
-      width: 1300,
-      height: 900,
-    });
+  critical.generate({
+    inline: true,
+    base: 'test/',
+    src: 'index.html',
+    target: {
+      html: 'index-critical.html',
+      css: 'critical.css',
+    },
+    width: 1300,
+    height: 900,
+  });
 });
